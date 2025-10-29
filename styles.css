@@ -1,0 +1,75 @@
+body{
+    background-color: rgb(177, 177, 177);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+header{
+    background-color: gray;
+}
+
+nav{
+    background-color: white;
+}
+
+main{
+    margin: 0;
+}
+
+#pianoContainer{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    align-self: baseline;
+    width: 80%;
+    margin: auto;
+    margin-top: 5%;
+    margin-bottom: 10%;
+}
+
+#whiteKeysContainer{
+    display: flex;
+    width: 50%;
+}
+
+.whiteKey{
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    width: 15%;
+    height: 50vh;
+    background-color: white;
+    margin: 0.5%;
+}
+.whiteKey:hover{
+    background-color: lightslategrey;
+}
+
+#emptyKey{
+    width: 19%;
+}
+
+#blackKeysContainer{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0 2%;
+    position: absolute;
+    width: 34%;
+    margin-left: 1.2%;
+}
+
+.blackKey{
+    display: inline-block;
+    width: 7.5%;
+    height: 30vh;
+    justify-self: flex-start;
+    background-color: rgb(0, 0, 0);
+    margin-left: 10%;
+    color: white;
+}
+
+.blackKey:hover{
+    background-color: lightslategray;
+}
