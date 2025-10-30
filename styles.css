@@ -22,9 +22,8 @@ main{
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    align-self: baseline;
-    width: 80%;
     margin: auto;
+    width: 87%;
     margin-top: 5%;
     margin-bottom: 10%;
 }

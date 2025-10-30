@@ -1,4 +1,4 @@
-#whiteKeysContainer{
+.whiteKeysContainer{
     display: flex;
     width: 50%;
 }
@@ -16,12 +16,19 @@
     background-color: lightslategrey;
 }
 
-#blackKeysContainer{
+#octaveSpace{
+    width: 5%;
+    opacity: 0;
+    pointer-events: none;
+    z-index: -100;
+}
+
+.blackKeysContainer{
     display: flex;
     justify-content: space-evenly;
     margin: 0 2%;
     position: absolute;
-    width: 34%;
+    width: 35%;
     margin-left: 1.2%;
     pointer-events: none;
 }
