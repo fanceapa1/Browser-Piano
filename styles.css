@@ -25,5 +25,32 @@ main{
     margin: auto;
     width: 87%;
     margin-top: 5%;
-    margin-bottom: 10%;
+    margin-bottom: 1%;
+}
+
+#octaveSelection{
+    margin-left: 3%;
+    width: 91%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.octaveDropdown{
+    display: inline-block;
+}
+
+.octaveDropdown button{
+    width: 150%;
+    display: block;
+}
+
+.dropdownContent{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.dropdownMenu:hover + .dropdownContent,
+.dropdownContent:hover {
+    opacity: 1;
+    pointer-events: all;
 }
