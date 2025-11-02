@@ -33,6 +33,10 @@ nav a{
     text-shadow: 1px 1px 2px black;
 }
 
+nav a:hover{
+    color: rgba(255, 230, 129, 0.679);
+}
+
 main{
     margin: 0;
 }
@@ -63,14 +67,24 @@ main{
 
 .octaveDropdown button{
     width: 150%;
+    border: 1px solid rgba(255, 255, 255, 0.364);
     background-color: rgba(0, 0, 0, 0.278);
     color: var(--text-color);
+    padding: 1px;
     display: block;
+}
+
+.octaveDropdown button:hover{
+    color: rgba(255, 230, 129, 0.679);
 }
 
 .dropdownContent{
     opacity: 0;
     pointer-events: none;
+}
+
+.dropdownMenu{
+    font-size: larger;
 }
 
 .dropdownMenu:hover + .dropdownContent,
@@ -139,6 +153,7 @@ main{
 #howToUse, #howItWorks{
     display: block;
     text-align: left;
+    margin-top: 5%;
     margin-bottom: 5%;
     margin-left: 2.5%;
     font-size: large;
@@ -175,7 +190,7 @@ main{
         "setting2 setting4";
     gap: 1.25rem;
     align-items: start;
-    padding: 1rem;
+    padding: 3% 0 5%;
     background: rgba(255,255,255,0.03);
     border-radius: 6px;
 }
@@ -205,9 +220,14 @@ input[type="checkbox"]{
 .notationDropdown button{
     width: 150%;
     height: 50%;
+    padding-bottom: 5%;
     background-color: rgba(201, 201, 201, 0.278);
     color: var(--text-color);
     display: block;
+}
+
+.notationDropdown button:hover{
+    color: rgba(255, 230, 129, 0.679);
 }
 
 footer{
