@@ -19,6 +19,7 @@ main{
 }
 
 #pianoContainer{
+    background-color: rgb(47, 47, 47);
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -26,6 +27,8 @@ main{
     width: 87%;
     margin-top: 5%;
     margin-bottom: 1%;
+    padding: 1%;
+    border-radius: 2%;
 }
 
 #octaveSelection{
@@ -53,4 +56,61 @@ main{
 .dropdownContent:hover {
     opacity: 1;
     pointer-events: all;
+}
+
+#headerImages{
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 1%;
+}
+
+#headerImages img{
+    width: 2%;
+    height: 2%;
+}
+
+.jump1{
+    animation: noteJump1 2s infinite ease-in-out;
+}
+
+.jump2{
+    animation: noteJump2 2s infinite ease-in-out;
+}
+
+#headerImages img:nth-child(odd){
+    --rot: 5deg;
+}
+
+#headerImages img:nth-child(even){
+    --rot: -5deg;
+}
+
+@keyframes noteJump1{
+    0%{
+
+    }
+    50%{
+        transform: translateY(0%) rotate(0deg);
+    }
+    70%{
+        transform: translateY(-10%) rotate(var(--rot));
+    }
+    100%{
+        transform: translateY(0%);
+    }
+}
+
+@keyframes noteJump2{
+    0%{
+        transform: translateY(0%) rotate(0deg);
+    }
+    40%{
+        transform: translateY(-10%) rotate(var(--rot));
+    }
+    60%{
+        transform: translateY(0%);
+    }
+    100%{
+
+    }
 }
