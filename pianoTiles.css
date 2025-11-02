@@ -56,3 +56,22 @@
     background-color: lightslategray;
 }
 
+/* code for small screens */
+@media screen and (max-width: 40em){
+    #octaveSpace{
+        display: block;
+        width: 0;
+    }
+    .whiteKeysContainer{
+        width: 90%;
+    }
+    .blackKeysContainer{
+        width: 66%;
+    }
+    .blackKey:nth-child(3){
+        opacity: 0;
+        width: 7%;
+        pointer-events: none;
+        z-index: -100;
+    }
+}
