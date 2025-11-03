@@ -18,6 +18,14 @@
     background-color: lightslategrey;
 }
 
+.whiteKey:active, .blackKey:active{
+    background-color: rgb(90, 103, 116);
+}
+
+.whiteKey.hovered, .blackKey.hovered{
+    background-color: rgb(90, 103, 116);
+}
+
 #octaveSpace{
     width: 5%;
     opacity: 0;
