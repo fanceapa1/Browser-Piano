@@ -6,7 +6,7 @@ function playNote(){
     const audio = document.querySelector(`audio[data-key="${this.id}"]`);
     if (!audio) return;
 
-    audio.currentTime = 0;
+    audio.currentTime = 0.1;
     audio.play();
 }
 
