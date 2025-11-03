@@ -75,89 +75,184 @@
             </div>
         </div>
 
-    <div id="octaveSelection">
-        <div class="octaveDropdown">
-            <button class="dropdownMenu">First octave</button>
-            <div class="dropdownContent">
-                <button>Octave 1</button>
-                <button>Octave 2</button>
-                <button>Octave 3</button>
-            </div>
-        </div>
-        <div class="octaveDropdown">
-            <button class="dropdownMenu">Second octave</button>
-            <div class="dropdownContent">
-                <button>Octave 1</button>
-                <button>Octave 2</button>
-                <button>Octave 3</button>
-            </div>
-        </div>
-    </div>
-
-    <section id="howToUse">
-        <h2>How to use</h2>
-        <p>
-            Play a song on the browser piano by clicking/tapping on the keys, or by
-            pressing the corresponding key on your keyboard.
-        </p>
-        <p>
-            The piano is split into two octaves, for accesibility purposes. A dropdown menu
-            is available below the keys, where you can select between different octaves,
-            depending on the song you want to play.
-        </p>
-        <p>
-            If you want to change visual elements of the piano, such as the color or the
-            displaying of the notes/keybinds on the piano's keys, you can do that in the
-            settings tab below this section.
-        </p>
-    </section>
-
-    <section id="howItWorks">
-        <h2>How it works</h2>
-        <p>
-            Each of the keys is mapped to a unique audio file. Whenever you press a key,
-            the corresponding audio file is played by the website.
-        </p>
-        <p>
-            When you switch the octave, the set of audio files is changed to match the selected
-            octave. You can even have both of the sets of keys set to the same octave, try to
-            create some unique harmonies! 
-        </p>
-    </section>
-
-    <section id="settings">
-        <h2>Settings</h2>
-        <div id="settingsTab">
-            <div id="setting1">
-                <input type="checkbox" id="showNotes" name="showNotes" checked/>
-                <label for="showNotes">Show notes</label>
-            </div>
-
-            <div id="setting2">
-                <input type="checkbox" id="showBinds" name="showBinds" checked/>
-                <label for="showBinds">Show keybinds</label>
-            </div>
-
-            <div id="setting3">
-                <div class="notationDropdown">
-                    <button class="dropdownMenu">Notation</button>
-                    <div class="dropdownContent">
-                        <button>Solfege</button>
-                        <button>Letter</button>
-                    </div>
+        <div id="octaveSelection">
+            <div class="octaveDropdown">
+                <button class="dropdownMenu">First octave</button>
+                <div class="dropdownContent">
+                    <button>Octave 1</button>
+                    <button>Octave 2</button>
+                    <button>Octave 3</button>
                 </div>
             </div>
-            <div id="setting4">
-                <input type="color" id="pianoColor" name="pianoColor">
-                <label for="pianoColor">Piano color</label>
+            <div class="octaveDropdown">
+                <button class="dropdownMenu">Second octave</button>
+                <div class="dropdownContent">
+                    <button>Octave 1</button>
+                    <button>Octave 2</button>
+                    <button>Octave 3</button>
+                </div>
             </div>
         </div>
-    </section>
+
+        <section id="howToUse">
+            <h2>How to use</h2>
+            <p>
+                Play a song on the browser piano by clicking/tapping on the keys, or by
+                pressing the corresponding key on your keyboard.
+            </p>
+            <p>
+                The piano is split into two octaves, for accesibility purposes. A dropdown menu
+                is available below the keys, where you can select between different octaves,
+                depending on the song you want to play.
+            </p>
+            <p>
+                If you want to change visual elements of the piano, such as the color or the
+                displaying of the notes/keybinds on the piano's keys, you can do that in the
+                settings tab below this section.
+            </p>
+        </section>
+
+        <section id="howItWorks">
+            <h2>How it works</h2>
+            <p>
+                Each of the keys is mapped to a unique audio file. Whenever you press a key,
+                the corresponding audio file is played by the website.
+            </p>
+            <p>
+                When you switch the octave, the set of audio files is changed to match the selected
+                octave. You can even have both of the sets of keys set to the same octave, try to
+                create some unique harmonies! 
+            </p>
+        </section>
+
+        <section id="settings">
+            <h2>Settings</h2>
+            <div id="settingsTab">
+                <div id="setting1">
+                    <input type="checkbox" id="showNotes" name="showNotes" checked/>
+                    <label for="showNotes">Show notes</label>
+                </div>
+
+                <div id="setting2">
+                    <input type="checkbox" id="showBinds" name="showBinds" checked/>
+                    <label for="showBinds">Show keybinds</label>
+                </div>
+
+                <div id="setting3">
+                    <div class="notationDropdown">
+                        <button class="dropdownMenu">Notation</button>
+                        <div class="dropdownContent">
+                            <button>Solfege</button>
+                            <button>Letter</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="setting4">
+                    <input type="color" id="pianoColor" name="pianoColor">
+                    <label for="pianoColor">Piano color</label>
+                </div>
+            </div>
+        </section>
 
     </main>
     <footer>
         <h2>Website made by Mosul Tudor</h2>
     </footer>
+
+    <!-- Octave 1 -->
+    <audio data-key="C1" src="./notes/C1.mp3"></audio>
+    <audio data-key="Db1" src="./notes/Db1.mp3"></audio>
+    <audio data-key="D1" src="./notes/D1.mp3"></audio>
+    <audio data-key="Eb1" src="./notes/Eb1.mp3"></audio>
+    <audio data-key="E1" src="./notes/E1.mp3"></audio>
+    <audio data-key="F1" src="./notes/F1.mp3"></audio>
+    <audio data-key="Gb1" src="./notes/Gb1.mp3"></audio>
+    <audio data-key="G1" src="./notes/G1.mp3"></audio>
+    <audio data-key="Ab1" src="./notes/Ab1.mp3"></audio>
+    <audio data-key="A1" src="./notes/A1.mp3"></audio>
+    <audio data-key="Bb1" src="./notes/Bb1.mp3"></audio>
+    <audio data-key="B1" src="./notes/B1.mp3"></audio>
+
+    <!-- Octave 2 -->
+    <audio data-key="C2" src="./notes/C2.mp3"></audio>
+    <audio data-key="Db2" src="./notes/Db2.mp3"></audio>
+    <audio data-key="D2" src="./notes/D2.mp3"></audio>
+    <audio data-key="Eb2" src="./notes/Eb2.mp3"></audio>
+    <audio data-key="E2" src="./notes/E2.mp3"></audio>
+    <audio data-key="F2" src="./notes/F2.mp3"></audio>
+    <audio data-key="Gb2" src="./notes/Gb2.mp3"></audio>
+    <audio data-key="G2" src="./notes/G2.mp3"></audio>
+    <audio data-key="Ab2" src="./notes/Ab2.mp3"></audio>
+    <audio data-key="A2" src="./notes/A2.mp3"></audio>
+    <audio data-key="Bb2" src="./notes/Bb2.mp3"></audio>
+    <audio data-key="B2" src="./notes/B2.mp3"></audio>
+
+    <!-- Octave 3 -->
+    <audio data-key="C3" src="./notes/C3.mp3"></audio>
+    <audio data-key="Db3" src="./notes/Db3.mp3"></audio>
+    <audio data-key="D3" src="./notes/D3.mp3"></audio>
+    <audio data-key="Eb3" src="./notes/Eb3.mp3"></audio>
+    <audio data-key="E3" src="./notes/E3.mp3"></audio>
+    <audio data-key="F3" src="./notes/F3.mp3"></audio>
+    <audio data-key="Gb3" src="./notes/Gb3.mp3"></audio>
+    <audio data-key="G3" src="./notes/G3.mp3"></audio>
+    <audio data-key="Ab3" src="./notes/Ab3.mp3"></audio>
+    <audio data-key="A3" src="./notes/A3.mp3"></audio>
+    <audio data-key="Bb3" src="./notes/Bb3.mp3"></audio>
+    <audio data-key="B3" src="./notes/B3.mp3"></audio>
+
+    <!-- Octave 4 -->
+    <audio data-key="C4" src="./notes/C4.mp3"></audio>
+    <audio data-key="Db4" src="./notes/Db4.mp3"></audio>
+    <audio data-key="D4" src="./notes/D4.mp3"></audio>
+    <audio data-key="Eb4" src="./notes/Eb4.mp3"></audio>
+    <audio data-key="E4" src="./notes/E4.mp3"></audio>
+    <audio data-key="F4" src="./notes/F4.mp3"></audio>
+    <audio data-key="Gb4" src="./notes/Gb4.mp3"></audio>
+    <audio data-key="G4" src="./notes/G4.mp3"></audio>
+    <audio data-key="Ab4" src="./notes/Ab4.mp3"></audio>
+    <audio data-key="A4" src="./notes/A4.mp3"></audio>
+    <audio data-key="Bb4" src="./notes/Bb4.mp3"></audio>
+    <audio data-key="B4" src="./notes/B4.mp3"></audio>
+
+    <!-- Octave 5 -->
+    <audio data-key="C5" src="./notes/C5.mp3"></audio>
+    <audio data-key="Db5" src="./notes/Db5.mp3"></audio>
+    <audio data-key="D5" src="./notes/D5.mp3"></audio>
+    <audio data-key="Eb5" src="./notes/Eb5.mp3"></audio>
+    <audio data-key="E5" src="./notes/E5.mp3"></audio>
+    <audio data-key="F5" src="./notes/F5.mp3"></audio>
+    <audio data-key="Gb5" src="./notes/Gb5.mp3"></audio>
+    <audio data-key="G5" src="./notes/G5.mp3"></audio>
+    <audio data-key="Ab5" src="./notes/Ab5.mp3"></audio>
+    <audio data-key="A5" src="./notes/A5.mp3"></audio>
+    <audio data-key="Bb5" src="./notes/Bb5.mp3"></audio>
+    <audio data-key="B5" src="./notes/B5.mp3"></audio>
+
+    <!-- Octave 6 -->
+    <audio data-key="C6" src="./notes/C6.mp3"></audio>
+    <audio data-key="Db6" src="./notes/Db6.mp3"></audio>
+    <audio data-key="D6" src="./notes/D6.mp3"></audio>
+    <audio data-key="Eb6" src="./notes/Eb6.mp3"></audio>
+    <audio data-key="E6" src="./notes/E6.mp3"></audio>
+    <audio data-key="F6" src="./notes/F6.mp3"></audio>
+    <audio data-key="Gb6" src="./notes/Gb6.mp3"></audio>
+    <audio data-key="G6" src="./notes/G6.mp3"></audio>
+    <audio data-key="Ab6" src="./notes/Ab6.mp3"></audio>
+    <audio data-key="A6" src="./notes/A6.mp3"></audio>
+    <audio data-key="Bb6" src="./notes/Bb6.mp3"></audio>
+    <audio data-key="B6" src="./notes/B6.mp3"></audio>
+
+    <!-- Octave 7 -->
+    <audio data-key="C7" src="./notes/C7.mp3"></audio>
+    <audio data-key="Db7" src="./notes/Db7.mp3"></audio>
+    <audio data-key="D7" src="./notes/D7.mp3"></audio>
+    <audio data-key="Eb7" src="./notes/Eb7.mp3"></audio>
+    <audio data-key="E7" src="./notes/E7.mp3"></audio>
+    <audio data-key="F7" src="./notes/F7.mp3"></audio>
+    <audio data-key="Gb7" src="./notes/Gb7.mp3"></audio>
+    <audio data-key="G7" src="./notes/G7.mp3"></audio>
+
     <script src="piano.js"></script>
 </body>
 </html>
