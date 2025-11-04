@@ -17,7 +17,7 @@ function playNoteClick(){
     else octave = octave2;
     const audio = document.querySelector(`audio[data-key="${note}${octave}"]`);
     if (!audio) return;
-    audio.currentTime = 0.1;
+    audio.currentTime = 0;
     audio.volume = 1;
     audio.play();
 }
@@ -46,12 +46,15 @@ function playNoteKey(e){
     else octave = octave2;
     const audio = document.querySelector(`audio[data-key="${note}${octave}"]`);
     if (!audio) return;
-    audio.currentTime = 0.1;
+    audio.currentTime = 0;
     audio.volume = 1;
     audio.play();
 
     const keyVisual = document.getElementById(`${pressedNote}`);
     keyVisual.classList.add('hovered');
+
+    
+
     setTimeout(() => {
         keyVisual.classList.remove('hovered');
     }, 150);
