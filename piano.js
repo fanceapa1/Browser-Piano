@@ -32,7 +32,7 @@ function playNoteKey(e){
         'C2', 'D2', 'E2', 'F2', 'G2', 'A2', 'B2',
         'Db2', 'Eb2', 'Gb2', 'Ab2', 'Bb2',
     ]
-    var pressedNote = notes[binds.search(e.key)];
+    var pressedNote = notes[binds.indexOf(e.key)];
 
     var octave = pressedNote[1];
     var note = pressedNote[0];
