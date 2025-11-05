@@ -42,7 +42,7 @@ main{
 }
 
 #pianoContainer{
-    background-color: rgba(47, 47, 47, 0.707);
+    background-color: #303030;
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -53,6 +53,7 @@ main{
     padding: 1%;
     border-radius: 2%;
 }
+
 
 #octaveSelection{
     margin-left: 3%;
@@ -220,6 +221,7 @@ input[type="checkbox"]{
 
 .notationDropdown{
     height: 100%;
+    margin-right: 50%;
 }
 
 .notationDropdown button{

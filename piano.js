@@ -91,6 +91,8 @@ const notations = document.querySelectorAll('.notation, .notationB');
 const showBindsCheckbox = document.getElementById('showBinds');
 const binds = document.querySelectorAll('.keybind, .keybindB');
 const notationDropdownButtons = document.querySelectorAll('.notationDropdownButton');
+const pianoColor = document.getElementById('pianoColor');
+const pianoContainer = document.getElementById('pianoContainer');
 
 function showNotesToggle(){
     if(showNotesCheckbox.checked == 0){
@@ -142,8 +144,15 @@ function changeNotation(){
     }
 }
 
+function changeColor(){
+    pianoContainer.style.backgroundColor = this.value;
+}
+
+
+
 showNotesCheckbox.addEventListener('click', showNotesToggle);
 showBindsCheckbox.addEventListener('click', showBindsToggle);
 notationDropdownButtons.forEach(button =>{
         button.addEventListener('click', changeNotation);
     })
+pianoColor.addEventListener('change', changeColor);
