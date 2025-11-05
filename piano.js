@@ -83,3 +83,39 @@ blackKeys.forEach(key => key.addEventListener('click', playNoteClick));
 octave1Buttons.forEach(button => button.addEventListener('click', switchOctave));
 octave2Buttons.forEach(button => button.addEventListener('click', switchOctave));
 window.addEventListener('keydown', playNoteKey);
+
+
+//settings tab
+const showNotesCheckbox = document.getElementById('showNotes');
+const notations = document.querySelectorAll('.notation, .notationB');
+const showBindsCheckbox = document.getElementById('showBinds');
+const binds = document.querySelectorAll('.keybind, .keybindB');
+
+function showNotesToggle(){
+    if(showNotesCheckbox.checked == 0){
+        notations.forEach(notation =>{
+            notation.style.opacity = 0;
+        })
+    }
+    else{
+        notations.forEach(notation =>{
+            notation.style.opacity = 1;
+        })
+    }
+}
+
+function showBindsToggle(){
+    if(showBindsCheckbox.checked == 0){
+        binds.forEach(bind =>{
+            bind.style.opacity = 0;
+        })
+    }
+    else{
+        binds.forEach(bind =>{
+            bind.style.opacity = 0.4;
+        })
+    }
+}
+
+showNotesCheckbox.addEventListener('click', showNotesToggle);
+showBindsCheckbox.addEventListener('click', showBindsToggle);
