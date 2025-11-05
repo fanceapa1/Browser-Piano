@@ -90,6 +90,7 @@ const showNotesCheckbox = document.getElementById('showNotes');
 const notations = document.querySelectorAll('.notation, .notationB');
 const showBindsCheckbox = document.getElementById('showBinds');
 const binds = document.querySelectorAll('.keybind, .keybindB');
+const notationDropdownButtons = document.querySelectorAll('.notationDropdownButton');
 
 function showNotesToggle(){
     if(showNotesCheckbox.checked == 0){
@@ -117,5 +118,32 @@ function showBindsToggle(){
     }
 }
 
+function changeNotation(){
+    solfege = ['Do#', 'Re#', 'Fa#', 'Sol#', 'La#', 'Do', 'Re', 'Mi', 'Fa', 'Sol', 'La', 'Si'];
+    letters = ['C#', 'D#', 'F#', 'G#', 'A#', 'C', 'D', 'E', 'F', 'G', 'A', 'B'];
+    notationDropdownButtons.forEach(button =>{
+        button.classList.remove('selected');
+    })
+    this.classList.add('selected');
+    solfegeIndex = 0; letterIndex = 0;
+    if(this.id === 'solfegeNotation'){
+        notations.forEach(notation =>{
+            notation.innerHTML = solfege[solfegeIndex % 12];
+            notation.style.fontSize = 'small';
+            solfegeIndex++;
+        })
+    }
+    else{
+        notations.forEach(notation =>{
+            notation.innerHTML = letters[letterIndex % 12];
+            notation.style.fontSize = 'medium';
+            letterIndex++;
+        })
+    }
+}
+
 showNotesCheckbox.addEventListener('click', showNotesToggle);
 showBindsCheckbox.addEventListener('click', showBindsToggle);
+notationDropdownButtons.forEach(button =>{
+        button.addEventListener('click', changeNotation);
+    })
