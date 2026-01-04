@@ -201,3 +201,13 @@ notationDropdownButtons.forEach(button =>{
         button.addEventListener('click', changeNotation);
     })
 pianoColor.addEventListener('change', changeColor);
+
+const feedbackForm = document.getElementById('feedbackForm');
+feedbackForm.addEventListener('submit', function(e) {
+    const message = document.getElementById('message').value;
+    const regex = /\bfuck\b/i;
+    if (regex.test(message)) {
+        e.preventDefault();
+        alert('Please keep the message appropriate.');
+    }
+});
