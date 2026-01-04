@@ -23,6 +23,9 @@ function playNoteClick(){
 }
 
 function playNoteKey(e){
+    if (document.activeElement.closest('#feedbackForm')) {
+        return;
+    }
     if(!"zxcvbnmsdghjyuiop[]780-=".includes(e.key))
         return;
     const binds = 'zxcvbnmsdghjyuiop[]780-=';
