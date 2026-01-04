@@ -20,6 +20,8 @@ function playNoteClick(){
     audio.currentTime = 0;
     audio.volume = 1;
     audio.play();
+    if(currentSongNotes)
+        checkNote(note);
 }
 
 function playNoteKey(e){
@@ -52,6 +54,9 @@ function playNoteKey(e){
     audio.currentTime = 0;
     audio.volume = 1;
     audio.play();
+
+    if(currentSongNotes)
+        checkNote(note);
 
     const keyVisual = document.getElementById(`${pressedNote}`);
     keyVisual.classList.add('hovered');
@@ -227,3 +232,77 @@ songsMenuOverlay.addEventListener('click', function(e) {
         songsMenuOverlay.classList.add('menu-hidden');
     }
 });
+
+songsMenuOverlay.addEventListener('click', function(e) {
+    if (e.target === songsMenuOverlay) {
+        songsMenuOverlay.classList.add('menu-hidden');
+    }
+});
+
+const songButtons = document.querySelectorAll('.song-button');
+const songDisplay = document.getElementById('songDisplay');
+const songTitle = document.getElementById('songTitle');
+const songNotes = document.getElementById('songNotes');
+const accuracyText = document.getElementById('songAccuracy');
+var currentSongNotes = ''
+var currAccuracy = 100, hitNotes = 0, totalNotes = 0;
+
+accuracyText.textContent = "Accuracy: 100%"
+
+function updateSongNotes(){
+    let notes = currentSongNotes.slice(0,6).join(' ');
+    notes = notes.replace(/Db/g, 'C#').replace(/Eb/g, 'D#').replace(/Gb/g, 'F#').replace(/Ab/g, 'G#').replace(/Bb/g, 'A#');
+    let noteArray = notes.split(' ');
+    let html = noteArray.map((note, index) => `<span class="note-${index+1}">${note}</span>`).join(' ');
+    songNotes.innerHTML = html;
+}
+
+songButtons.forEach(button => {
+    button.addEventListener('click', function() {
+        songsMenuOverlay.classList.add('menu-hidden');
+        document.getElementById('octaveSelection').style.marginBottom = '-15%';
+
+        fetch('./songs/come_as_you_are.json')
+            .then(response => response.json())
+            .then(data => {
+                songTitle.textContent = `${data.song_title} - ${data.artist}`;
+                
+                const notesArray = data.notes.split(' ');
+                currentSongNotes = notesArray
+
+                updateSongNotes();
+                
+                songDisplay.classList.remove('song-display-hidden');
+            })
+            .catch(error => {
+                console.error('Error loading song:', error);
+                alert('Could not load song data');
+            });
+    });
+});
+
+function checkNote(note){
+    if(note == currentSongNotes[0]){
+        const firstNoteSpan = document.querySelector('.note-1');
+        if(firstNoteSpan){
+            firstNoteSpan.classList.add('correct');
+            setTimeout(() => {
+                currentSongNotes.splice(0,1);
+                updateSongNotes();
+            }, 200);
+        }
+        hitNotes++;
+    }
+    else{
+        const firstNoteSpan = document.querySelector('.note-1');
+        if(firstNoteSpan){
+            firstNoteSpan.classList.add('wrong');
+            setTimeout(() => {
+                firstNoteSpan.classList.remove('wrong');
+            }, 200);
+        }
+    }
+    totalNotes++;
+    currAccuracy = hitNotes / totalNotes;
+    accuracyText.textContent = `Accuracy: ${(currAccuracy*100).toFixed(2)}%`;
+}
