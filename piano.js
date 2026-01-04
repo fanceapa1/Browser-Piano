@@ -91,8 +91,44 @@ const notations = document.querySelectorAll('.notation, .notationB');
 const showBindsCheckbox = document.getElementById('showBinds');
 const binds = document.querySelectorAll('.keybind, .keybindB');
 const notationDropdownButtons = document.querySelectorAll('.notationDropdownButton');
+const solfegeButton = document.getElementById('solfegeNotation')
+const letterButton = document.getElementById('letterNotation')
 const pianoColor = document.getElementById('pianoColor');
 const pianoContainer = document.getElementById('pianoContainer');
+
+Object.keys(localStorage).forEach(key => {
+    const value = localStorage.getItem(key);
+    switch(key){
+        case 'notes':
+            notations.forEach(notation =>{
+                notation.style.opacity = value;
+            })
+            showNotesCheckbox.checked = value === "1";
+            break;
+        case 'keybinds':
+            binds.forEach(bind =>{
+                bind.style.opacity = value;
+            })
+            showBindsCheckbox.checked = value === "0.4";
+            break;
+        case 'notation':
+            if(value == 'solfege'){
+                letterButton.classList.remove('selected')
+                solfegeButton.classList.add('selected')
+                var solfege = ['Do#', 'Re#', 'Fa#', 'Sol#', 'La#', 'Do', 'Re', 'Mi', 'Fa', 'Sol', 'La', 'Si'];
+                var solfegeIndex = 0;
+                notations.forEach(notation =>{
+                    notation.innerHTML = solfege[solfegeIndex % 12];
+                    notation.style.fontSize = 'small';
+                    solfegeIndex++;
+                })
+            }
+            /// nu trebuie tratat pt notatie cu litere fiindca asa se incarca default
+            break;
+        case 'color':
+            break;
+    }
+});
 
 function showNotesToggle(){
     if(showNotesCheckbox.checked == 0){
@@ -105,6 +141,8 @@ function showNotesToggle(){
             notation.style.opacity = 1;
         })
     }
+    currOpacity = window.getComputedStyle(notations[0]).getPropertyValue('opacity');
+    localStorage.notes = currOpacity;
 }
 
 function showBindsToggle(){
@@ -118,22 +156,25 @@ function showBindsToggle(){
             bind.style.opacity = 0.4;
         })
     }
+    currOpacity = window.getComputedStyle(binds[0]).getPropertyValue('opacity');
+    localStorage.keybinds = currOpacity;
 }
 
 function changeNotation(){
-    solfege = ['Do#', 'Re#', 'Fa#', 'Sol#', 'La#', 'Do', 'Re', 'Mi', 'Fa', 'Sol', 'La', 'Si'];
-    letters = ['C#', 'D#', 'F#', 'G#', 'A#', 'C', 'D', 'E', 'F', 'G', 'A', 'B'];
+    var solfege = ['Do#', 'Re#', 'Fa#', 'Sol#', 'La#', 'Do', 'Re', 'Mi', 'Fa', 'Sol', 'La', 'Si'];
+    var letters = ['C#', 'D#', 'F#', 'G#', 'A#', 'C', 'D', 'E', 'F', 'G', 'A', 'B'];
     notationDropdownButtons.forEach(button =>{
         button.classList.remove('selected');
     })
     this.classList.add('selected');
-    solfegeIndex = 0; letterIndex = 0;
+    var solfegeIndex = 0, letterIndex = 0;
     if(this.id === 'solfegeNotation'){
         notations.forEach(notation =>{
             notation.innerHTML = solfege[solfegeIndex % 12];
             notation.style.fontSize = 'small';
             solfegeIndex++;
         })
+        localStorage.notation = 'solfege'
     }
     else{
         notations.forEach(notation =>{
@@ -141,6 +182,7 @@ function changeNotation(){
             notation.style.fontSize = 'medium';
             letterIndex++;
         })
+        localStorage.notation = 'letter'
     }
 }
 
