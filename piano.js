@@ -128,8 +128,6 @@ Object.keys(localStorage).forEach(key => {
             }
             /// nu trebuie tratat pt notatie cu litere fiindca asa se incarca default
             break;
-        case 'color':
-            break;
     }
 });
 
@@ -209,5 +207,23 @@ feedbackForm.addEventListener('submit', function(e) {
     if (regex.test(message)) {
         e.preventDefault();
         alert('Please keep the message appropriate.');
+    }
+});
+
+const openSongsBtn = document.getElementById('openSongsMenu');
+const closeSongsBtn = document.getElementById('closeSongsMenu');
+const songsMenuOverlay = document.getElementById('songsMenuOverlay');
+
+openSongsBtn.addEventListener('click', function() {
+    songsMenuOverlay.classList.remove('menu-hidden');
+});
+
+closeSongsBtn.addEventListener('click', function() {
+    songsMenuOverlay.classList.add('menu-hidden');
+});
+
+songsMenuOverlay.addEventListener('click', function(e) {
+    if (e.target === songsMenuOverlay) {
+        songsMenuOverlay.classList.add('menu-hidden');
     }
 });

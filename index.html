@@ -32,11 +32,25 @@
         </div>
         <nav>
             <a href="#howToUse">How to use</a>
-            <a href="#howItWorks">How it works</a>
             <a href="#settings">Settings</a>
+            <a href="#feedback">Feedback</a>
         </nav>
     </header>
     <main>
+        <button id="openSongsMenu">Songs Menu</button>
+        
+        <div id="songsMenuOverlay" class="menu-hidden">
+            <div id="songsMenuContent">
+                <button id="closeSongsMenu">×</button>
+                <h2>Select a Song</h2>
+                <div id="songsGrid">
+                    <button class="song-button">Beethoven - Fur Elise</button>
+                    <button class="song-button">Nirvana - Come as You Are</button>
+                    <button class="song-button">Linkin Park - What I've done</button>
+                    <button class="song-button">HIM - Join Me</button>
+                </div>
+            </div>
+        </div>
         <div id="pianoContainer">
             <div class="whiteKeysContainer">
                 <div class="blackKeysContainer">
@@ -193,19 +207,6 @@
             </p>
         </section>
 
-        <section id="howItWorks">
-            <h2>How it works</h2>
-            <p>
-                Each of the keys is mapped to a unique audio file. Whenever you press a key,
-                the corresponding audio file is played by the website.
-            </p>
-            <p>
-                When you switch the octave, the set of audio files is changed to match the selected
-                octave. You can even have both of the sets of keys set to the same octave, try to
-                create some unique harmonies! 
-            </p>
-        </section>
-
         <section id="settings">
             <h2>Settings</h2>
             <div id="settingsTab">
@@ -235,10 +236,25 @@
             </div>
         </section>
 
+        <section id="feedback">
+            <h2>Feedback</h2>
+            <form id="feedbackForm">
+                <div>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div>
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
     </main>
-    <footer>
-        <h2>Website made by Mosul Tudor</h2>
-    </footer>
 
     <!-- Octave 1 -->
     <audio data-key="C1" src="./notes/C1.mp3"></audio>
