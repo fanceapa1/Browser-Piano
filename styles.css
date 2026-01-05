@@ -448,6 +448,13 @@ input[type="checkbox"]{
     color: rgba(255, 230, 129, 0.9);
 }
 
+#songAccuracy {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    transition: transform 0.5s ease;
+}
+
 #songNotes .note-1 { font-size: 120%; opacity: 1; }
 #songNotes .note-2 { opacity: 0.9; }
 #songNotes .note-3 { opacity: 0.8; }

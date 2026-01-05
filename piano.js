@@ -20,7 +20,7 @@ function playNoteClick(){
     audio.currentTime = 0;
     audio.volume = 1;
     audio.play();
-    if(currentSongNotes)
+    if(currentSongNotes.length)
         checkNote(note);
 }
 
@@ -55,7 +55,7 @@ function playNoteKey(e){
     audio.volume = 1;
     audio.play();
 
-    if(currentSongNotes)
+    if(currentSongNotes.length)
         checkNote(note);
 
     const keyVisual = document.getElementById(`${pressedNote}`);
@@ -245,9 +245,9 @@ const songTitle = document.getElementById('songTitle');
 const songNotes = document.getElementById('songNotes');
 const accuracyText = document.getElementById('songAccuracy');
 var currentSongNotes = ''
-var currAccuracy = 100, hitNotes = 0, totalNotes = 0;
+var currAccuracy = 1, hitNotes = 0, totalNotes = 0;
 
-accuracyText.textContent = "Accuracy: 100%"
+accuracyText.textContent = "Accuracy: 100.00%"
 
 function updateSongNotes(){
     let notes = currentSongNotes.slice(0,6).join(' ');
@@ -255,12 +255,19 @@ function updateSongNotes(){
     let noteArray = notes.split(' ');
     let html = noteArray.map((note, index) => `<span class="note-${index+1}">${note}</span>`).join(' ');
     songNotes.innerHTML = html;
+    if(currentSongNotes.length == 0){
+        accuracyText.style.transform = 'scale(1.5)';
+        console.log(1);
+    }
 }
 
 songButtons.forEach(button => {
     button.addEventListener('click', function() {
         songsMenuOverlay.classList.add('menu-hidden');
         document.getElementById('octaveSelection').style.marginBottom = '-15%';
+        accuracyText.style.transform = 'scale(1.0)';
+        accuracyText.textContent = "Accuracy: 100.00%"
+        currAccuracy = 1; hitNotes = 0; totalNotes = 0;
 
         fetch('./songs/come_as_you_are.json')
             .then(response => response.json())
@@ -289,7 +296,7 @@ function checkNote(note){
             setTimeout(() => {
                 currentSongNotes.splice(0,1);
                 updateSongNotes();
-            }, 200);
+            }, 100);
         }
         hitNotes++;
     }
