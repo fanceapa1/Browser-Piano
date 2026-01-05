@@ -269,7 +269,12 @@ songButtons.forEach(button => {
         accuracyText.textContent = "Accuracy: 100.00%"
         currAccuracy = 1; hitNotes = 0; totalNotes = 0;
 
-        fetch('./songs/come_as_you_are.json')
+        let songFile = 'come_as_you_are.json'; // default
+        if (this.textContent.includes('Fur Elise')) songFile = 'fur_elise.json';
+        else if (this.textContent.includes('What')) songFile = 'what_ive_done.json';
+        else if (this.textContent.includes('Join Me')) songFile = 'join_me.json';
+
+        fetch(`./songs/${songFile}`)
             .then(response => response.json())
             .then(data => {
                 songTitle.textContent = `${data.song_title} - ${data.artist}`;
