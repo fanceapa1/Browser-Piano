@@ -240,6 +240,7 @@ songsMenuOverlay.addEventListener('click', function(e) {
 });
 
 const songButtons = document.querySelectorAll('.song-button');
+const randomSongBtn = document.getElementById('randomSong');
 const songDisplay = document.getElementById('songDisplay');
 const songTitle = document.getElementById('songTitle');
 const songNotes = document.getElementById('songNotes');
@@ -250,8 +251,6 @@ var currentSongId = '';
 var currAccuracy = 1, hitNotes = 0, totalNotes = 0;
 
 accuracyText.textContent = "Accuracy: 100.00%"
-
-/// TODO: add id to each song, update highscore after song ends
 
 function loadHighscores() {
     songButtons.forEach(button => {
@@ -290,6 +289,32 @@ resetScoresBtn.addEventListener('click', function() {
 
 loadHighscores();
 
+function loadSong(songFile, songId) {
+    songsMenuOverlay.classList.add('menu-hidden');
+    document.getElementById('octaveSelection').style.marginBottom = '-15%';
+    accuracyText.style.transform = 'scale(1.0)';
+    accuracyText.textContent = "Accuracy: 100.00%"
+    currAccuracy = 1; hitNotes = 0; totalNotes = 0;
+    currentSongId = songId;
+
+    fetch(`./songs/${songFile}`)
+        .then(response => response.json())
+        .then(data => {
+            songTitle.textContent = `${data.song_title} - ${data.artist}`;
+            
+            const notesArray = data.notes.split(' ');
+            currentSongNotes = notesArray
+
+            updateSongNotes();
+            
+            songDisplay.classList.remove('song-display-hidden');
+        })
+        .catch(error => {
+            console.error('Error loading song:', error);
+            alert('Could not load song data');
+        });
+}
+
 function updateSongNotes(){
     let notes = currentSongNotes.slice(0,6).join(' ');
     notes = notes.replace(/Db/g, 'C#').replace(/Eb/g, 'D#').replace(/Gb/g, 'F#').replace(/Ab/g, 'G#').replace(/Bb/g, 'A#');
@@ -304,34 +329,27 @@ function updateSongNotes(){
 
 songButtons.forEach(button => {
     button.addEventListener('click', function() {
-        songsMenuOverlay.classList.add('menu-hidden');
-        document.getElementById('octaveSelection').style.marginBottom = '-15%';
-        accuracyText.style.transform = 'scale(1.0)';
-        accuracyText.textContent = "Accuracy: 100.00%"
-        currAccuracy = 1; hitNotes = 0; totalNotes = 0;
-
-        let songFile = 'come_as_you_are.json'; currentSongId = 'come_as_you_are' // default
-        if (this.textContent.includes('Fur Elise')){ songFile = 'fur_elise.json'; currentSongId = 'fur_elise';}
-        else if (this.textContent.includes('What')){ songFile = 'what_ive_done.json'; currentSongId = 'what_ive_done';}
-        else if (this.textContent.includes('Join Me')){ songFile = 'join_me.json'; currentSongId = 'join_me';}
-
-        fetch(`./songs/${songFile}`)
-            .then(response => response.json())
-            .then(data => {
-                songTitle.textContent = `${data.song_title} - ${data.artist}`;
-                
-                const notesArray = data.notes.split(' ');
-                currentSongNotes = notesArray
-
-                updateSongNotes();
-                
-                songDisplay.classList.remove('song-display-hidden');
-            })
-            .catch(error => {
-                console.error('Error loading song:', error);
-                alert('Could not load song data');
-            });
+        let songFile = 'come_as_you_are.json', songId = 'come_as_you_are'; // default
+        if (this.textContent.includes('Fur Elise')) { songFile = 'fur_elise.json'; songId = 'fur_elise'; }
+        else if (this.textContent.includes('What')) { songFile = 'what_ive_done.json'; songId = 'what_ive_done'; }
+        else if (this.textContent.includes('Join Me')) { songFile = 'join_me.json'; songId = 'join_me'; }
+        
+        loadSong(songFile, songId);
     });
+});
+
+randomSongBtn.addEventListener('click', function() {
+    const songs = [
+        { file: 'fur_elise.json', id: 'fur_elise' },
+        { file: 'come_as_you_are.json', id: 'come_as_you_are' },
+        { file: 'what_ive_done.json', id: 'what_ive_done' },
+        { file: 'join_me.json', id: 'join_me' }
+    ];
+    
+    const randomIndex = Math.floor(Math.random() * songs.length);
+    const selectedSong = songs[randomIndex];
+    
+    loadSong(selectedSong.file, selectedSong.id);
 });
 
 function checkNote(note){
