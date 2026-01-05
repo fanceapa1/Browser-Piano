@@ -602,7 +602,32 @@ input[type="checkbox"]{
     }
     
     .song-button {
-        padding: 1.5rem;
-        font-size: 1.2rem;
+        padding: 1rem;
+        font-size: 1rem;
+    }
+
+    #octaveSelection {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .octaveDropdown {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .octaveDropdown button {
+        width: 100%;
+        text-align: center;
+    }
+
+    .dropdownContent {
+        width: 100%;
+    }
+
+    .dropdownContent button {
+        width: 100%;
+        text-align: center;
     }
 }
